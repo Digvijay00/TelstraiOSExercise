@@ -39,6 +39,21 @@ class TelstraFactTableViewModel {
         }
         
     }
+    
+    
+    /*
+    @description: - Check network availability
+    @return: -      Void
+    */
+    func isNetworkAvailable() -> Bool {
+        if ConnectionCheck.isConnectedToNetwork() {
+            return true
+        }
+        else{
+            return false
+        }
+    }
+    
 }
 
 

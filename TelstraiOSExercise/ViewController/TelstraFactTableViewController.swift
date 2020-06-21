@@ -17,6 +17,7 @@ class TelstraFactTableViewController: UIViewController {
     var imageDownloader : ImageDownloaderManager?
     var tableView = UITableView()
     var refreshControl = UIRefreshControl()
+    let activityView = UIActivityIndicatorView(style: .large)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +33,17 @@ class TelstraFactTableViewController: UIViewController {
         
     }
     
+    
+    
     override func viewWillAppear(_ animated: Bool) {
-           super.viewWillAppear(animated)
+        super.viewWillAppear(animated)
+        if(viewModel.isNetworkAvailable()){
+            addActivityIndicator()
             viewModel.loadTelstraData()
+        }
+        else{
+            self.showErrorAlert()
+        }
        }
     
     //MARK:  - ADD PULL TO REFRESH
@@ -47,7 +56,33 @@ class TelstraFactTableViewController: UIViewController {
     
     // MARK:  - ACTION FOR PULL TO REFRESH
     @objc func refresh(_ sender: AnyObject) {
-       viewModel.loadTelstraData()
+        if(viewModel.isNetworkAvailable()){
+            viewModel.loadTelstraData()
+        }
+        else{
+          self.refreshControl.endRefreshing()
+          self.showErrorAlert()
+        }
+    }
+    
+    // MARK:  - ADD ACTIVITY INDICATOR UNTIL DATA IS BEING FETCH
+    func addActivityIndicator() {
+        activityView.center = self.view.center
+        activityView.startAnimating()
+        self.view.addSubview(activityView)
+    }
+    
+    
+    // MARK:  - SHOW ERROR ALERT IF NO NETWORK CONNECTOIN 
+    func showErrorAlert()   {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: CONNECTION_ALERT_TITLE, message: CONNECTION_ALERT_MESSAGE, preferredStyle: UIAlertController.Style.alert)
+            // add an action (button)
+            alert.addAction(UIAlertAction(title: CONNECTION_ALERT_BUTTON_TITLE, style: UIAlertAction.Style.default, handler: nil))
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+        }
+        
     }
     
     
@@ -112,7 +147,8 @@ extension TelstraFactTableViewController: TelstraViewResponder {
         self.dataSet = data
         DispatchQueue.main.async {
              self.tableView.reloadData()
-            self.refreshControl.endRefreshing()
+             self.refreshControl.endRefreshing()
+             self.activityView.stopAnimating()
         }
     }
     
