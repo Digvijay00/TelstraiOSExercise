@@ -7,3 +7,7 @@
 //
 
 import Foundation
+//MARK:  -  CONSTANT DECLARATION 
+let GET_TELSTRA_FACT = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
+let PULL_TO_REFRESH = "Pull to refresh"
+let CELL_ID = "tableViewCellId"
