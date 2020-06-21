@@ -114,8 +114,8 @@
 				85685BF7249F466D00C5366B /* SceneDelegate.swift */,
 				855E51B4249E7B3C0023133F /* AppDelegate.swift */,
 				855E51E6249E835F0023133F /* Model */,
-				855E51E4249E81F40023133F /* View Controller */,
-				855E51E7249E83850023133F /* View Model */,
+				855E51E4249E81F40023133F /* ViewController */,
+				855E51E7249E83850023133F /* ViewModel */,
 				855E51EC249E85540023133F /* Manager */,
 				855E51F1249E92CD0023133F /* TableViewCell */,
 				85685BF4249F365E00C5366B /* Constant */,
@@ -145,12 +145,12 @@
 			path = TelstraiOSExerciseUITests;
 			sourceTree = "<group>";
 		};
-		855E51E4249E81F40023133F /* View Controller */ = {
+		855E51E4249E81F40023133F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
 				855E51F4249E96B90023133F /* TelstraFactTableViewController.swift */,
 			);
-			path = "View Controller";
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		855E51E6249E835F0023133F /* Model */ = {
@@ -161,12 +161,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		855E51E7249E83850023133F /* View Model */ = {
+		855E51E7249E83850023133F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				855E51EA249E84F30023133F /* TelstraFactTableViewModel.swift */,
 			);
-			path = "View Model";
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		855E51EC249E85540023133F /* Manager */ = {
