@@ -52,7 +52,9 @@ class ImageDownloaderManager {
             }
         } else {
             getImageFor(path: path, completion: { (data) in
+                // check if url return  byte data for image
                 guard let imageData = data else {completion(nil);return}
+                // check data has vaild image 
                 guard let image = UIImage(data: imageData) else {completion(nil);return}
                 self.cache?.setObject(image, forKey: path as NSString)
                 DispatchQueue.main.async {

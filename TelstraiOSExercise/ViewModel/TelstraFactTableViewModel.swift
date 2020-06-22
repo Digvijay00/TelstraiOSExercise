@@ -28,16 +28,15 @@ class TelstraFactTableViewModel {
         */
     func loadTelstraData() {
         NetworkManager.networkManagerObj.getNetworkHandler(urlString: GET_TELSTRA_FACT ) { (factArray: TelstraFacts?, response: URLResponse?, error: Error?) in
-            guard let title = factArray?.title else {
-                return
+            
+            if let titile = factArray?.title {
+                self.responder.updateTelstraTitle(titile)
             }
-            self.responder.updateTelstraTitle(title)
-            guard let rows = factArray?.rows else {
-                return
+            if let rows = factArray?.rows{
+                self.responder.updateTelstraFactList(rows)
             }
-            self.responder.updateTelstraFactList(rows)
+            
         }
-        
     }
     
     

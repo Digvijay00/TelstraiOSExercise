@@ -12,12 +12,12 @@ import UIKit
 //MARK:  TABLE VIEW CONTROLLER TO DISPLAY IMAGES
 class TelstraFactTableViewController: UIViewController {
 
-    var viewModel: TelstraFactTableViewModel!
+    var viewModel: TelstraFactTableViewModel?
     var dataSet : [TelstraFactData] = []
     var imageDownloader : ImageDownloaderManager?
-    var tableView = UITableView()
-    var refreshControl = UIRefreshControl()
-    let activityView = UIActivityIndicatorView(style: .large)
+    lazy var tableView = UITableView()
+    lazy var refreshControl = UIRefreshControl()
+    lazy var activityView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +30,7 @@ class TelstraFactTableViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         imageDownloader = ImageDownloaderManager()
+        activityView =   UIActivityIndicatorView(style: .large)
         
     }
     
@@ -37,14 +38,16 @@ class TelstraFactTableViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if(viewModel.isNetworkAvailable()){
-            addActivityIndicator()
-            viewModel.loadTelstraData()
+        if let isNetworkAvailable = viewModel?.isNetworkAvailable(){
+            if(isNetworkAvailable){
+                addActivityIndicator()
+                viewModel?.loadTelstraData()
+            }
+            else{
+                self.showErrorAlert()
+            }
         }
-        else{
-            self.showErrorAlert()
-        }
-       }
+    }
     
     //MARK:  - ADD PULL TO REFRESH
     func addPullToRefresh() {
@@ -56,12 +59,14 @@ class TelstraFactTableViewController: UIViewController {
     
     // MARK:  - ACTION FOR PULL TO REFRESH
     @objc func refresh(_ sender: AnyObject) {
-        if(viewModel.isNetworkAvailable()){
-            viewModel.loadTelstraData()
-        }
-        else{
-          self.refreshControl.endRefreshing()
-          self.showErrorAlert()
+        if let isNetworkAvailable = viewModel?.isNetworkAvailable(){
+            if(isNetworkAvailable){
+                viewModel?.loadTelstraData()
+            }
+            else{
+                self.refreshControl.endRefreshing()
+                self.showErrorAlert()
+            }
         }
     }
     
@@ -132,7 +137,14 @@ extension TelstraFactTableViewController: UITableViewDelegate, UITableViewDataSo
                 self.imageDownloader?.checkImage(path: imageUrl, completion: { (image) in
                     DispatchQueue.main.async {
                         if tableView.cellForRow(at: indexPath) != nil {
-                            cell.cellImage.image = image
+                            // check imageUrl has valid image or not
+                            if(image == nil){
+                                let defaultImage = UIImage(named: "noImg")
+                                cell.cellImage.image = defaultImage
+                            }
+                            else{
+                                cell.cellImage.image = image
+                            }
                         }
                     }
                 })

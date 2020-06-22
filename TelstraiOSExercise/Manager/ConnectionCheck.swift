@@ -1,10 +1,12 @@
 //
 //  ConnectionCheck.swift
-//  ConsumerApp
+//  TelstraiOSExercise
 //
-//  Created by abhinav.b.kumar.jha on 22/06/18.
-//  Copyright © 2018 abhinav.b.kumar.jha. All rights reserved.
+//  Created by Digvijay.digvijay on 6/22/20.
+//  Copyright © 2020 Digvijay.digvijay. All rights reserved.
 //
+
+import Foundation
 
 import Foundation
 import SystemConfiguration

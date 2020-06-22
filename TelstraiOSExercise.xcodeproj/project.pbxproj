@@ -21,7 +21,7 @@
 		855E51F5249E96B90023133F /* TelstraFactTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 855E51F4249E96B90023133F /* TelstraFactTableViewController.swift */; };
 		85685BF6249F369000C5366B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85685BF5249F369000C5366B /* Constants.swift */; };
 		85685BF8249F466E00C5366B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85685BF7249F466D00C5366B /* SceneDelegate.swift */; };
-		85B7E919249F4F9900C64E85 /* ConnectionCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85B7E918249F4F9900C64E85 /* ConnectionCheck.swift */; };
+		858EE15724A0D2720086BFF7 /* ConnectionCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858EE15624A0D2720086BFF7 /* ConnectionCheck.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +62,7 @@
 		855E51F4249E96B90023133F /* TelstraFactTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelstraFactTableViewController.swift; sourceTree = "<group>"; };
 		85685BF5249F369000C5366B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		85685BF7249F466D00C5366B /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		85B7E918249F4F9900C64E85 /* ConnectionCheck.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionCheck.swift; sourceTree = "<group>"; };
+		858EE15624A0D2720086BFF7 /* ConnectionCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionCheck.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,9 +174,9 @@
 		855E51EC249E85540023133F /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				85B7E918249F4F9900C64E85 /* ConnectionCheck.swift */,
 				855E51ED249E85790023133F /* NetworkManager.swift */,
 				855E51EF249E91E30023133F /* ImageDownloaderManager.swift */,
+				858EE15624A0D2720086BFF7 /* ConnectionCheck.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -332,7 +332,7 @@
 				855E51EB249E84F30023133F /* TelstraFactTableViewModel.swift in Sources */,
 				85685BF8249F466E00C5366B /* SceneDelegate.swift in Sources */,
 				855E51F5249E96B90023133F /* TelstraFactTableViewController.swift in Sources */,
-				85B7E919249F4F9900C64E85 /* ConnectionCheck.swift in Sources */,
+				858EE15724A0D2720086BFF7 /* ConnectionCheck.swift in Sources */,
 				855E51E9249E84100023133F /* FactsModel.swift in Sources */,
 				855E51B5249E7B3C0023133F /* AppDelegate.swift in Sources */,
 				855E51F3249E93680023133F /* TelstraFactsTableViewCell.swift in Sources */,
